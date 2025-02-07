@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  Leaf, Home, Search, QrCode, Hotel, 
-  ShoppingCart, Award, Map, Settings, 
+  Leaf, Home, QrCode, Hotel, 
+  ShoppingCart, Award, Map, 
   User, LogOut, BarChart2 
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
@@ -27,7 +27,7 @@ export const Sidebar = () => {
     <div className="fixed inset-y-0 left-0 w-64 bg-white shadow-lg">
       <div className="flex items-center p-4 border-b">
         <Leaf className="h-8 w-8 text-green-600" />
-        <span className="ml-2 text-xl font-bold">EcoCredits</span>
+        <span className="ml-2 text-xl font-bold">EcoCreds</span>
       </div>
 
       <nav className="p-4 space-y-2">

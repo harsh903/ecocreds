@@ -13,7 +13,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -37,7 +37,7 @@ export default function Login() {
               </div>
             </div>
             <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
-            <p className="text-gray-600 mt-2">Login to your EcoCredits account</p>
+            <p className="text-gray-600 mt-2">Login to your EcoCreds account</p>
           </div>
 
           {error && (

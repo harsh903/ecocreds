@@ -1,14 +1,36 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { auth } from '@/config/firebase';
-import { onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { 
+  onAuthStateChanged, 
+  signOut, 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  User
+} from 'firebase/auth';
 
-const AuthContext = createContext({});
+interface AuthContextType {
+  user: User | null;
+  login: (email: string, password: string) => Promise<any>;
+  signup: (email: string, password: string) => Promise<any>;
+  logout: () => Promise<void>;
+}
+
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  login: async () => {},
+  signup: async () => {},
+  logout: async () => {}
+});
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+export const AuthContextProvider = ({ 
+  children 
+}: { 
+  children: React.ReactNode 
+}) => {
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,11 +46,11 @@ export const AuthContextProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const login = (email, password) => {
+  const login = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const signup = (email, password) => {
+  const signup = (email: string, password: string) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 

@@ -39,7 +39,7 @@ export default function Home() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Leaf className="w-6 h-6 text-green-600 mr-2" />
-              <span className="font-bold text-xl">EcoCredits</span>
+              <span className="font-bold text-xl">EcoCreds</span>
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#features" className="text-gray-600 hover:text-green-600">Features</a>
@@ -182,7 +182,7 @@ export default function Home() {
           <div>
             <div className="flex items-center mb-4">
               <Leaf className="w-6 h-6 text-green-400 mr-2" />
-              <span className="font-bold text-xl">EcoCredits</span>
+              <span className="font-bold text-xl">EcoCreds</span>
             </div>
             <p className="text-gray-400">
               Smart for Business, Great for Planet
