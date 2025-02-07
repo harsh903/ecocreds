@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  // ... other config
+  // target: 'server', // or remove this line entirely
 };
 
 module.exports = nextConfig;
