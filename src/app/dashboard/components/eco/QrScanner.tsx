@@ -21,7 +21,7 @@ export const QrScanner = ({ onScan, onClose }: QrScannerProps) => {
           height: 250,
         },
         fps: 5,
-      });
+      }, false);
 
       scanner.render(success, error);
 

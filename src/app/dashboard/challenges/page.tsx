@@ -1,5 +1,5 @@
 'use client';
-import { Award, Trophy, Target, Star, Zap, Car, Hotel, Tree, Users, Globe } from 'lucide-react';
+import { Star, Zap, Car, Hotel, Trees, Users, Globe } from 'lucide-react';
 
 export default function ChallengesPage() {
   const stats = {

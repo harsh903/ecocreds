@@ -1,5 +1,5 @@
 'use client';
-import { ShoppingBag, Tag, Zap, Car, Tree, Coffee, Ticket } from 'lucide-react';
+import { ShoppingBag, Tag, Zap, Car, Trees, Coffee, Ticket } from 'lucide-react';
 
 export default function MarketplacePage() {
   const products = [

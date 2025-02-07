@@ -25,7 +25,7 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center bg-green-50 px-4">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div>
-          <h2 className="text-3xl font-bold text-center">Join EcoCredits</h2>
+          <h2 className="text-3xl font-bold text-center">Join EcoCreds</h2>
           <p className="text-center text-gray-600 mt-2">
             Start your sustainable journey today
           </p>

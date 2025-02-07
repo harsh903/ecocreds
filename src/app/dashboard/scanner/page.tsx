@@ -11,7 +11,16 @@ export default function ScannerPage() {
   const [showScanner, setShowScanner] = useState(false);
   const [scanResult, setScanResult] = useState('');
   const [points, setPoints] = useState(0);
-  const [scanHistory, setScanHistory] = useState([]);
+  interface ScanHistoryItem {
+    timestamp: string;
+    points: number;
+    type: string;
+    location: string;
+    impact: string;
+    [key: string]: any;
+  }
+
+  const [scanHistory, setScanHistory] = useState<ScanHistoryItem[]>([]);
   const [totalPoints, setTotalPoints] = useState(1250);
   const [scanStreak, setScanStreak] = useState(5);
 
@@ -28,7 +37,7 @@ export default function ScannerPage() {
     { icon: <MapPin />, type: 'location', label: 'Eco Location' }
   ];
 
-  const handleScan = (result) => {
+  const handleScan = (result: string) => {
     try {
       const qrData = JSON.parse(result);
       if (qrData.type && qrData.value) {
@@ -53,8 +62,8 @@ export default function ScannerPage() {
     }
   };
 
-  const calculatePoints = (type) => {
-    const pointsMap = {
+  const calculatePoints = (type: 'transport' | 'hotel' | 'recycling' | 'location') => {
+    const pointsMap: { [key in 'transport' | 'hotel' | 'recycling' | 'location']: number } = {
       'transport': Math.floor(Math.random() * 50) + 100,
       'hotel': Math.floor(Math.random() * 100) + 200,
       'recycling': Math.floor(Math.random() * 30) + 50,
@@ -63,7 +72,7 @@ export default function ScannerPage() {
     return pointsMap[type] || Math.floor(Math.random() * 50) + 50;
   };
 
-  const calculateImpact = (type) => {
+  const calculateImpact = (type: 'transport' | 'hotel' | 'recycling' | 'location') => {
     const impactMap = {
       'transport': 'Reduced 2kg CO2',
       'hotel': 'Saved 5kWh energy',
