@@ -17,7 +17,7 @@ export const Sidebar = () => {
     { title: 'Travel Hub', icon: <Map />, path: '/dashboard/travel' },
     { title: 'Hotels', icon: <Hotel />, path: '/dashboard/hotels' },
     { title: 'Challenges', icon: <Award />, path: '/dashboard/challenges' },
-    { title: 'Marketplace', icon: <ShoppingCart />, path: '/dashboard/marketplace' },
+    { title: 'Rewards', icon: <ShoppingCart />, path: '/dashboard/Rewards' },
     { title: 'Analytics', icon: <BarChart2 />, path: '/dashboard/analytics' },
     { title: 'QR Scanner', icon: <QrCode />, path: '/dashboard/scanner' },
     { title: 'Profile', icon: <User />, path: '/dashboard/profile' }

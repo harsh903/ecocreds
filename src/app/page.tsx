@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <nav className="bg-white shadow-sm fixed w-full z-10">
+      <nav className="bg-white shadow-sm fixed w-full z-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -57,36 +57,47 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-28 pb-20 px-4 bg-gradient-to-br from-green-50 via-white to-green-50">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 mb-8 md:mb-0">
-            <div className="inline-block px-4 py-2 bg-green-100 rounded-full text-green-600 font-medium mb-6">
-              🌱 India's Leading Sustainability Platform
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-screen flex items-center">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <div className="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+          <video 
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute w-full h-full object-cover"
+            poster="/api/placeholder/1920/1080"
+          >
+            <source src="/video/home.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 w-full pt-16">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0 text-white">
+              <div className="inline-block px-4 py-2 bg-green-600 bg-opacity-90 rounded-full font-medium mb-6">
+                🌱 India's Leading Sustainability Platform
+              </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Smart for Business,
+                <span className="text-green-400"> Great for Planet</span>
+              </h1>
+              <p className="text-xl mb-8 leading-relaxed">
+                Join India's 3rd largest carbon trading Rewards. Transform your business operations 
+                into sustainable practices while earning rewards.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors">
+                  Start Your Journey
+                </button>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-green-600 transition-colors">
+                  Schedule Demo
+                </button>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Smart for Business,
-              <span className="text-green-600"> Great for Planet</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Join India's 3rd largest carbon trading marketplace. Transform your business operations 
-              into sustainable practices while earning rewards.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors">
-                Start Your Journey
-              </button>
-              <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg hover:bg-green-50 transition-colors">
-                Schedule Demo
-              </button>
-            </div>
-          </div>
-          <div className="md:w-1/2 flex justify-center">
-            <img 
-              src="/api/placeholder/600/500" 
-              alt="Sustainability Solutions"
-              className="rounded-2xl shadow-2xl"
-            />
           </div>
         </div>
       </section>
@@ -112,6 +123,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Rest of the sections remain the same */}
       {/* Sectors Section */}
       <section id="sectors" className="py-20 px-4 bg-green-50">
         <div className="max-w-7xl mx-auto">
@@ -176,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer with Contact */}
+      {/* Footer */}
       <footer id="contact" className="bg-gray-900 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
           <div>

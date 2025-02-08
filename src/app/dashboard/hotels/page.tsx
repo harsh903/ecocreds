@@ -1,5 +1,5 @@
 'use client';
-import { Star, Leaf, Award } from 'lucide-react';
+import { Star, Leaf, Award, Camera } from 'lucide-react';
 
 export default function HotelsPage() {
   const hotels = [
@@ -16,7 +16,8 @@ export default function HotelsPage() {
         'Farm to Table'
       ],
       certifications: ['First Zero Carbon Hotel in World'],
-      image: '/api/placeholder/300/200'
+      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      virtualTour: 'https://www.itchotels.com/in/en/itcwindsor-bengaluru/virtual-tour'
     },
     {
       name: 'Taj Exotica',
@@ -31,7 +32,8 @@ export default function HotelsPage() {
         'Local Community Support'
       ],
       certifications: ['EarthCheck Certified'],
-      image: '/api/placeholder/300/200'
+      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80',
+      virtualTour: 'https://www.tajhotels.com/en-in/taj/taj-exotica-goa/gallery/'
     },
     {
       name: 'The Oberoi Udaivilas',
@@ -46,7 +48,8 @@ export default function HotelsPage() {
         'Waste Management'
       ],
       certifications: ['Green Globe Certified'],
-      image: '/api/placeholder/300/200'
+      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80',
+      virtualTour: 'https://www.oberoihotels.com/hotels-in-udaipur-udaivilas-resort/gallery'
     },
     {
       name: 'The Leela Palace',
@@ -61,7 +64,8 @@ export default function HotelsPage() {
         'Local Sourcing'
       ],
       certifications: ['ISO 14001 Certified'],
-      image: '/api/placeholder/300/200'
+      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      virtualTour: 'https://www.theleela.com/the-leela-palace-new-delhi/gallery/'
     }
   ];
 
@@ -129,12 +133,21 @@ export default function HotelsPage() {
                   </span>
                 ))}
               </div>
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center mb-4">
                 <span className="font-bold">{hotel.price}</span>
-                <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
-                  Book Now
-                </button>
+                <a 
+                  href={hotel.virtualTour} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center text-blue-600 hover:underline"
+                >
+                  <Camera className="w-4 h-4 mr-1" />
+                  Virtual Tour
+                </a>
               </div>
+              <button className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                Book Now
+              </button>
             </div>
           </div>
         ))}
