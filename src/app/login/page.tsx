@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { Leaf, Mail, Lock, ArrowRight } from 'lucide-react';
+import { Leaf, Mail, Lock, ArrowRight, Building, User, BarChart2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Login() {
@@ -12,13 +12,14 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [loginType, setLoginType] = useState('individual'); // 'individual' or 'corporate'
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     try {
       await login(email, password);
-      router.push('/dashboard');
+      router.push(loginType === 'corporate' ? '/dashboard/corporate' : '/dashboard');
     } catch (err) {
       setError('Invalid email or password');
     } finally {
@@ -37,8 +38,49 @@ export default function Login() {
               </div>
             </div>
             <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
-            <p className="text-gray-600 mt-2">Login to your EcoCreds account</p>
+            <p className="text-gray-600 mt-2">Login to your EcoCredits account</p>
           </div>
+
+          {/* Login Type Selector */}
+          <div className="flex rounded-lg bg-gray-100 p-1 mb-6">
+            <button
+              onClick={() => setLoginType('individual')}
+              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition-colors ${
+                loginType === 'individual' 
+                  ? 'bg-white shadow-sm text-green-600' 
+                  : 'text-gray-600 hover:text-green-600'
+              }`}
+            >
+              <User className="w-4 h-4 mr-2" />
+              Individual
+            </button>
+            <button
+              onClick={() => setLoginType('corporate')}
+              className={`flex-1 flex items-center justify-center py-2 px-4 rounded-md transition-colors ${
+                loginType === 'corporate' 
+                  ? 'bg-white shadow-sm text-green-600' 
+                  : 'text-gray-600 hover:text-green-600'
+              }`}
+            >
+              <Building className="w-4 h-4 mr-2" />
+              Corporate
+            </button>
+          </div>
+
+          {loginType === 'corporate' && (
+            <div className="bg-green-50 p-4 rounded-lg mb-6">
+              <div className="flex items-center mb-2">
+                <BarChart2 className="w-5 h-5 text-green-600 mr-2" />
+                <h3 className="font-medium">Corporate Partner Benefits</h3>
+              </div>
+              <ul className="text-sm text-gray-600 space-y-2 ml-7">
+                <li>• Real-time sustainability metrics dashboard</li>
+                <li>• Employee engagement analytics</li>
+                <li>• Carbon credit trading platform</li>
+                <li>• ESG reporting tools</li>
+              </ul>
+            </div>
+          )}
 
           {error && (
             <div className="bg-red-50 text-red-500 p-4 rounded-lg mb-6 text-center">
@@ -50,7 +92,7 @@ export default function Login() {
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium text-gray-700 block mb-2">
-                  Email
+                  {loginType === 'corporate' ? 'Corporate Email' : 'Email'}
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
@@ -59,7 +101,7 @@ export default function Login() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500"
-                    placeholder="Enter your email"
+                    placeholder={loginType === 'corporate' ? 'Enter your corporate email' : 'Enter your email'}
                     required
                   />
                 </div>
@@ -110,22 +152,34 @@ export default function Login() {
                 <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               ) : (
                 <>
-                  Sign in
+                  {loginType === 'corporate' ? 'Access Dashboard' : 'Sign in'}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </>
               )}
             </button>
           </form>
 
-          <p className="mt-8 text-center text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link
-              href="/signup"
-              className="font-medium text-green-600 hover:text-green-500"
-            >
-              Sign up
-            </Link>
-          </p>
+          {loginType === 'individual' ? (
+            <p className="mt-8 text-center text-sm text-gray-600">
+              Don't have an account?{' '}
+              <Link
+                href="/signup"
+                className="font-medium text-green-600 hover:text-green-500"
+              >
+                Sign up
+              </Link>
+            </p>
+          ) : (
+            <p className="mt-8 text-center text-sm text-gray-600">
+              Need a corporate account?{' '}
+              <Link
+                href="/contact"
+                className="font-medium text-green-600 hover:text-green-500"
+              >
+                Contact Sales
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </div>
